@@ -18,6 +18,9 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.freenetproject.mobile.Runner;
+import org.freenetproject.mobile.Installer;
+
 /**
  * Class responsible for exposing data to the UI. It also exposes methods for the UI to interact with,
  * such as startService and stopService.
@@ -25,7 +28,7 @@ import java.util.Map;
 public class Manager {
 
     private static Manager instance = null;
-    private Runner runner = Runner.getInstance();
+    private final Runner runner = Runner.getInstance();
 
     public enum Status {
         STARTING_UP,
@@ -85,6 +88,7 @@ public class Manager {
                         context.getDir("data", Context.MODE_PRIVATE).getAbsolutePath(),
                         res.openRawResource(R.raw.seednodes),
                         res.openRawResource(R.raw.freenet),
+                        res.openRawResource(R.raw.bookmarks),
                         res.getConfiguration().locale.getDisplayLanguage()
                 );
             } catch (FileNotFoundException e) {
