@@ -12,14 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: set up JDK
       uses: actions/setup-java@v1
       with:
         java-version: 17
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
-    - name: Install NDK
-      run: sudo bash -c 'echo "y" | ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}'
+    - uses: nttld/setup-ndk@v1
+      id: setup-ndk
+      with:
+        ndk-version: r26d
+        link-to-sdk: true
     - name: Build with Gradle
       run: ./gradlew build
