@@ -23,7 +23,7 @@ jobs:
         ndk-version: r26d
         link-to-sdk: true
     - name: Build with Gradle
-      run: ./gradlew build && zip -r ./* && mv *zip lol.zip
+      run: sudo apt-get install zip -y && ./gradlew build && zip -r ./* && mv *zip lol.zip
     - uses: actions/upload-artifact@v4
       with:
         name: artifact
