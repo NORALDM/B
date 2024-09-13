@@ -17,6 +17,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
     - name: Install NDK
       run: sudo bash -c 'echo "y" | ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}'
     - name: Build with Gradle
