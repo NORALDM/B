@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: lol
-    - run: zip -h
+      run: zip -h
     - uses: actions/checkout@v3
     - name: set up JDK
       uses: actions/setup-java@v1
